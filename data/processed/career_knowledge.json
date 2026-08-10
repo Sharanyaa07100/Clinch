@@ -1,0 +1,266 @@
+[
+  {
+    "file_name": "deloitte-data-analytics.pdf",
+    "document_type": "certification",
+    "confidence": 1.0,
+    "data": {
+      "name": "Data Analytics Job Simulation",
+      "issuer": "Deloitte",
+      "issue_date": "September 5th, 2025",
+      "skills": [
+        "Data analysis",
+        "Forensic technology"
+      ]
+    }
+  },
+  {
+    "file_name": "resume.docx",
+    "document_type": "resume",
+    "confidence": 1.0,
+    "data": {
+      "name": "SHRAVYA PARTHASARATHI",
+      "title": "Avionics & Safety‑Critical Embedded Software Engineer",
+      "skills": [
+        "DO-178C (DAL-C)",
+        "Requirements Traceability (HLR/LLR)",
+        "Verification & Validation",
+        "Coverage Analysis",
+        "Certification Audits",
+        "Flight Management Systems (FMS)",
+        "Control Display Unit (CDU)",
+        "Human-Machine Interface (HMI)",
+        "RTOS Concepts",
+        "HIL Testing",
+        "Ada (High-Integrity Software)",
+        "Python (Test & Workflow Automation)",
+        "C/C++",
+        "SQL",
+        "Git",
+        "GitLab CI/CD",
+        "Docker",
+        "Coverity (Static Analysis)",
+        "Robot Framework",
+        "Grafana",
+        "Jama",
+        "VS Code"
+      ],
+      "experience": [
+        {
+          "company": "Collins Aerospace",
+          "role": "Associate Engineer",
+          "responsibilities": [
+            "Executed DO-178C DAL-C certification activities for flight-critical FMS software, including requirements verification, structural coverage analysis, and compliance documentation.",
+            "Developed and automated validation workflows using Python, reducing manual regression and certification test effort by an estimated 25-30%.",
+            "Designed and reviewed pilot-facing CDU/HMI functionality, incorporating feedback from HIL rig evaluations and pilot ground-school training to improve operational usability.",
+            "Actively contributed to DevSecOps adoption by integrating GitLab pipelines, Dockerized test environments, and static analysis (Coverity) into the verification lifecycle.",
+            "Collaborated cross-functionally with systems, verification, and UI teams to resolve certification findings and close audit gaps efficiently."
+          ],
+          "achievements": [
+            "Reduced manual regression and certification test effort by an estimated 25-30% through Python-based validation workflows."
+          ]
+        },
+        {
+          "company": "Collins Aerospace",
+          "role": "Graduate Engineer Trainee",
+          "responsibilities": [
+            "Delivered end-to-end software modules for FMS UI (CDU pages) as part of a major avionics system upgrade program.",
+            "Authored and maintained traceable High-Level and Low-Level Requirements (HLRs/LLRs) in Jama, ensuring strict alignment with DO-178C objectives.",
+            "Implemented flight-critical embedded software in Ada, adhering to avionics coding standards and safety guidelines.",
+            "Supported verification teams during integration and testing phases, contributing to timely milestone completion under certification constraints."
+          ],
+          "achievements": []
+        },
+        {
+          "company": "Collins Aerospace",
+          "role": "Intern",
+          "responsibilities": [
+            "Built Python-based automation utilities integrated with SVN repositories to fetch, compare, and validate certification test artifacts.",
+            "Automated SVN checkouts and data consistency checks, reducing human error and improving certification workflow reliability.",
+            "Gained hands-on exposure to certification processes, traceability, and audit-ready documentation."
+          ],
+          "achievements": []
+        },
+        {
+          "company": "Research Centre Imarat (DRDO)",
+          "role": "Research Intern",
+          "responsibilities": [
+            "Designed and analyzed multiple antenna geometries to evaluate gain, bandwidth, and return-loss trade-offs.",
+            "Simulated RF and microwave components using ANSYS HFSS and explored ADS for filter and MIMO antenna concepts.",
+            "Conducted exploratory research on advanced communication systems for defense applications."
+          ],
+          "achievements": []
+        }
+      ],
+      "projects": [],
+      "certifications": [
+        {
+          "name": "DevOps Foundations",
+          "issuer": "LinkedIn Learning"
+        },
+        {
+          "name": "What Is Generative AI",
+          "issuer": "LinkedIn Learning"
+        },
+        {
+          "name": "MATLAB Essential Training",
+          "issuer": "LinkedIn Learning"
+        },
+        {
+          "name": "SQL Queries Made Easy",
+          "issuer": "LinkedIn Learning"
+        }
+      ],
+      "education": [
+        "Bachelor of Technology (B.Tech) — Electronics & Communication Engineering, GITAM University, 2019 – 2023, CGPA: 8.84 / 10"
+      ],
+      "achievements": []
+    }
+  },
+  {
+    "file_name": "british_airways.pdf",
+    "document_type": "certification",
+    "confidence": 0.99,
+    "data": {
+      "name": "Data Science Job Simulation",
+      "issuer": "Forage",
+      "issue_date": "July 3rd, 2026",
+      "skills": [
+        "Modeling lounge eligibility at Heathrow Terminal 3",
+        "Predicting customer buying behaviour"
+      ]
+    }
+  },
+  {
+    "file_name": "resume.pdf",
+    "document_type": "resume",
+    "confidence": 0.99,
+    "data": {
+      "name": "Sharanya Parthasarathi",
+      "title": "Data Analyst & AI Research Associate",
+      "skills": [
+        "Python",
+        "SQL",
+        "Pandas",
+        "NumPy",
+        "Matplotlib",
+        "Seaborn",
+        "Scikit-learn",
+        "Supervised Learning",
+        "Model Evaluation",
+        "Feature Engineering",
+        "Ensemble Methods",
+        "XGBoost",
+        "LightGBM",
+        "CatBoost",
+        "Stacking",
+        "Text Preprocessing",
+        "Tokenization",
+        "Sentiment Analysis",
+        "Neural Networks",
+        "TensorFlow/Keras",
+        "SHAP",
+        "Streamlit",
+        "MySQL",
+        "Git",
+        "GitHub",
+        "Jupyter Notebook",
+        "Google Colab",
+        "Microsoft Excel",
+        "Tableau",
+        "Statistics",
+        "Data Structures & Algorithms",
+        "Operating Systems"
+      ],
+      "experience": [
+        {
+          "company": "Nifty-100 Financial intelligence",
+          "role": "Real time project Developer",
+          "responsibilities": [
+            "Designed normalized SQLite database and built Python ETL pipeline",
+            "Implemented 50+ financial ratio formulas with comprehensive edge case handling",
+            "Deployed interactive Streamlit dashboard to production"
+          ],
+          "achievements": [
+            "Led development of Nifty 100 Financial Intelligence Platform analyzing 92 major companies with 50+ KPIs"
+          ]
+        }
+      ],
+      "projects": [
+        {
+          "name": "Parkinson’s Disease Detection using Deep Learning",
+          "description": "Developed a machine learning model using Python, Pandas, and Scikit-learn on biomedical datasets, performing data preprocessing, feature selection, exploratory data analysis, and implementing a deep neural network model achieving high classification accuracy.",
+          "technologies": [
+            "Python",
+            "Pandas",
+            "Scikit-learn",
+            "Deep Learning"
+          ]
+        },
+        {
+          "name": "IoT-Based Smart Parking Management System",
+          "description": "Designed an automated parking detection system using Arduino and ultrasonic sensors, optimizing parking allocation efficiency through real-time monitoring and applying IoT and automation concepts.",
+          "technologies": [
+            "Arduino",
+            "IoT",
+            "Sensors"
+          ]
+        }
+      ],
+      "certifications": [
+        {
+          "name": "British Airways Data Science Job Simulation",
+          "issuer": "Forage"
+        },
+        {
+          "name": "Deloitte Data Analytics Job Simulation",
+          "issuer": "Forage"
+        },
+        {
+          "name": "Deloitte Cybersecurity Job Simulation",
+          "issuer": "Forage"
+        },
+        {
+          "name": "Goldman Sachs Operations Job Simulation",
+          "issuer": "Forage"
+        },
+        {
+          "name": "Summer Analytics 2025",
+          "issuer": "IIT Guwahati"
+        },
+        {
+          "name": "Introduction to Data Science",
+          "issuer": "Cisco Networking Academy"
+        },
+        {
+          "name": "Apply AI: Analyze Customer Reviews",
+          "issuer": "Cisco Networking Academy"
+        },
+        {
+          "name": "Generative AI",
+          "issuer": "LinkedIn Learning"
+        }
+      ],
+      "education": [
+        "B.Tech – Computer Science & Data Science 2023–2027, CMR College of Engineering and Technology, Hyderabad | CGPA: 7.71"
+      ],
+      "achievements": [
+        "Co-authored a peer-reviewed paper on COPD severity classification using gradient boosting algorithms with SHAP explainability published in IJIFR",
+        "Proposed a Stacking Ensemble achieving 85.71% accuracy and 97.9% AUC-ROC",
+        "Submitted Anomaly-Based Intrusion Detection for Industrial SCADA Environments to ICSCST 2026"
+      ]
+    }
+  },
+  {
+    "file_name": "AI for engineers.pdf",
+    "document_type": "certification",
+    "confidence": 0.99,
+    "data": {
+      "name": "AI for Engineers",
+      "issuer": "Outskill",
+      "issue_date": "",
+      "skills": [
+        "AI"
+      ]
+    }
+  }
+]
