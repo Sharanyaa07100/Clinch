@@ -1,6 +1,9 @@
+from semantic_matcher import semantic_match_skill, flatten_evidence
+
+
 def normalize_skill(skill):
     """
-    Normalize a skill for comparison.
+    Normalize a skill for consistent comparison.
     """
 
     skill = skill.lower().strip()
@@ -39,9 +42,11 @@ def collect_profile_skills(documents):
             else data.model_dump()
         )
 
+        # Direct skills
         for skill in data_dict.get("skills", []):
             skills.add(normalize_skill(skill))
 
+        # Project technologies
         for project in data_dict.get("projects", []):
 
             for technology in project.get("technologies", []):
@@ -72,7 +77,10 @@ def collect_evidence(documents):
 
         file_name = document.get("file_name")
 
+        # -------------------------------------------------
         # Direct skills
+        # -------------------------------------------------
+
         for skill in data_dict.get("skills", []):
 
             normalized = normalize_skill(skill)
@@ -83,7 +91,10 @@ def collect_evidence(documents):
                 "evidence": skill
             })
 
-        # Projects
+        # -------------------------------------------------
+        # Project technologies
+        # -------------------------------------------------
+
         for project in data_dict.get("projects", []):
 
             project_name = project.get("name")
@@ -98,10 +109,43 @@ def collect_evidence(documents):
                     "evidence": project_name
                 })
 
+        # -------------------------------------------------
+        # Experience
+        # -------------------------------------------------
+
+        for experience in data_dict.get("experience", []):
+
+            company = experience.get("company")
+            role = experience.get("role")
+
+            responsibilities = experience.get(
+                "responsibilities",
+                []
+            )
+
+            for responsibility in responsibilities:
+
+                # Store the responsibility as searchable
+                # evidence without pretending it is a skill.
+                evidence.setdefault(
+                    "__experience__",
+                    []
+                ).append({
+                    "source": file_name,
+                    "type": "experience",
+                    "evidence": (
+                        f"{company} — {role}: "
+                        f"{responsibility}"
+                    )
+                })
+
     return evidence
 
 
 def match_skills(jd, profile_skills):
+    """
+    Perform basic exact skill matching against a JD.
+    """
 
     required = [
         normalize_skill(skill)
@@ -141,3 +185,56 @@ def match_skills(jd, profile_skills):
         "matched_preferred": matched_preferred,
         "missing_preferred": missing_preferred
     }
+
+
+def match_jd_skills(jd_skills, evidence):
+    """
+    Match JD skills using a two-stage approach:
+
+    1. Exact matching using the local knowledge base.
+    2. Semantic matching using Clinch/Gemini only when
+       an exact match cannot be found.
+    """
+
+    results = []
+
+    # Convert our evidence dictionary into a list
+    # that can be provided to the semantic matcher.
+    candidate_evidence = flatten_evidence(evidence)
+
+    for skill in jd_skills:
+
+        # Normalize the JD skill before comparison.
+        normalized_skill = normalize_skill(skill)
+
+        # -------------------------------------------------
+        # Stage 1: Exact match
+        # -------------------------------------------------
+
+        if normalized_skill in evidence:
+
+            results.append({
+                "skill": skill,
+                "status": "EXACT",
+                "confidence": 1.0,
+                "reason": (
+                    "Exact skill found in the "
+                    "candidate knowledge base."
+                ),
+                "evidence": evidence[normalized_skill]
+            })
+
+            continue
+
+        # -------------------------------------------------
+        # Stage 2: Semantic fallback
+        # -------------------------------------------------
+
+        result = semantic_match_skill(
+            skill,
+            candidate_evidence
+        )
+
+        results.append(result)
+
+    return results

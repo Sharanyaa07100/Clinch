@@ -3,8 +3,11 @@ from llm import ask_gemini
 
 def semantic_match_skill(jd_skill, profile_evidence):
     """
-    Ask Clinch whether the candidate's evidence
-    is an exact, related, or missing match for a JD skill.
+    Determine whether candidate evidence is an exact,
+    related, or missing match for a JD skill.
+
+    This function is intentionally conservative.
+    It must not upgrade related evidence to EXACT.
     """
 
     evidence_text = "\n".join(
@@ -15,8 +18,8 @@ def semantic_match_skill(jd_skill, profile_evidence):
     prompt = f"""
 You are Clinch, an AI career matching assistant.
 
-Determine whether the candidate has evidence relevant
-to the requested job skill.
+Your job is to determine whether the candidate has evidence
+for a specific job requirement.
 
 JOB REQUIREMENT:
 {jd_skill}
@@ -24,36 +27,138 @@ JOB REQUIREMENT:
 CANDIDATE EVIDENCE:
 {evidence_text}
 
-Classify the relationship as exactly one of:
+Classify the requirement into exactly ONE of:
 
 EXACT
 RELATED
 MISSING
 
-Definitions:
+========================
+STRICT CLASSIFICATION RULES
+========================
 
 EXACT:
-The candidate explicitly has the requested skill.
+
+Use EXACT ONLY when the candidate evidence explicitly contains
+the requested skill or a clearly equivalent standardized name.
+
+Examples:
+
+JD: Python
+Evidence: Python
+=> EXACT
+
+JD: Machine Learning
+Evidence: Machine Learning
+=> EXACT
+
+JD: Scikit-learn
+Evidence: Scikit-learn
+=> EXACT
+
+JD: Continuous Integration / Continuous Deployment
+Evidence: CI/CD
+=> EXACT
+
+Do NOT infer EXACT merely because the candidate demonstrates
+the concept.
+
+========================
 
 RELATED:
-The candidate does not explicitly list the exact skill,
-but their projects, technologies, education, research,
-or experience demonstrate closely related knowledge.
+
+Use RELATED when the exact requested skill is NOT explicitly
+present, but the candidate has strong and meaningful evidence
+of closely related knowledge.
+
+Example:
+
+JD: Machine Learning
+
+Evidence:
+- Supervised Learning
+- Deep Learning
+- XGBoost
+- LightGBM
+- CatBoost
+- Scikit-learn
+
+=> RELATED
+
+Another example:
+
+JD: Machine Learning
+
+Evidence:
+- AI
+- Deep Learning
+
+=> RELATED
+
+Another example:
+
+JD: Kubernetes
+
+Evidence:
+- Docker
+- GitLab CI/CD
+- DevOps
+
+=> RELATED
+
+========================
 
 MISSING:
-There is no meaningful evidence that the candidate has
-this skill.
 
-Important rules:
+Use MISSING when there is no meaningful evidence that the
+candidate has the requested skill.
 
-- Do not invent experience.
-- Do not assume that learning one technology means knowing
-  every related technology.
-- Do not classify something as EXACT unless there is explicit
-  evidence.
-- Return only valid JSON.
+Example:
 
-Return:
+JD: Kubernetes
+
+Evidence:
+- Python
+- SQL
+- Tableau
+
+=> MISSING
+
+========================
+CRITICAL RULE
+========================
+
+DO NOT classify a skill as EXACT based on inference.
+
+The following do NOT prove an EXACT match for Machine Learning:
+
+- AI
+- Artificial Intelligence
+- Deep Learning
+- Supervised Learning
+- Neural Networks
+- XGBoost
+- LightGBM
+- CatBoost
+- Scikit-learn
+
+These may support a RELATED classification.
+
+Only explicit "Machine Learning" or a clearly equivalent
+standardized term should produce EXACT.
+
+Similarly, do not assume that one technology automatically
+means another technology.
+
+Never invent skills or experience.
+
+========================
+OUTPUT
+========================
+
+Return ONLY valid JSON.
+
+Use this exact structure:
 
 {{
     "skill": "{jd_skill}",
@@ -69,7 +174,8 @@ Return:
 
 def flatten_evidence(evidence):
     """
-    Convert the evidence dictionary into a simple list.
+    Convert the evidence dictionary into a simple list
+    for semantic matching.
     """
 
     flattened = []

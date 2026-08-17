@@ -1,0 +1,33 @@
+Data Scientist
+
+Company: Example Technologies
+
+We are looking for a Data Scientist to build machine learning models
+and analyze business data.
+
+Required Skills:
+- Python
+- SQL
+- Pandas
+- NumPy
+- Scikit-learn
+- Machine Learning
+- Statistics
+
+Preferred Skills:
+- XGBoost
+- TensorFlow
+- Tableau
+- Streamlit
+- Git
+
+Responsibilities:
+- Build and evaluate machine learning models.
+- Perform data preprocessing and feature engineering.
+- Analyze datasets and communicate insights.
+- Develop data-driven solutions.
+
+Qualifications:
+- Bachelor's degree in Computer Science, Data Science, Statistics,
+  Mathematics, or a related field.
+- Strong analytical and problem-solving skills.
